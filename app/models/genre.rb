@@ -10,4 +10,8 @@
 
 class Genre < ApplicationRecord
   has_many :movies
+
+  def movies_count
+    movies.count
+  end
 end
