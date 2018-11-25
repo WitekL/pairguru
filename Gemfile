@@ -9,6 +9,8 @@ gem "draper"
 gem "haml-rails"
 gem "jquery-rails"
 gem "sass-rails"
+# Model serialization
+gem "fast_jsonapi"
 gem "sqlite3"
 # Used for parallel http requests
 gem "typhoeus"
