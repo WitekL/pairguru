@@ -11,4 +11,16 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end
+
+  def titles(resource)
+    resource.map(&:title)
+  end
+
+  def fetch_multiple_movies(movie_titles)
+    NetguruAPI::V1::Client.new.movies_info(movie_titles)
+  end
+
+  def fetch_single_movie(movie_title)
+    NetguruAPI::V1::Client.new.single_movie_info(movie_title)
+  end
 end

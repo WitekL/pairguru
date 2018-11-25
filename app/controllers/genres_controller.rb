@@ -4,6 +4,9 @@ class GenresController < ApplicationController
   end
 
   def movies
-    @genre = Genre.find(params[:id]).decorate
+    resource = Genre.find(params[:id])
+    data = fetch_multiple_movies(titles(resource.movies))
+
+    @genre = resource.decorate(context: data)
   end
 end

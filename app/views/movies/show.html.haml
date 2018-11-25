@@ -1,5 +1,13 @@
 %h1= @movie.title
 .jumbotron
-  = @movie.description
+  .container
+    .row
+      .col-xs-2
+        %img.img-rounded{ src: @movie.cover, height: '300', width: '200', style: "margin-left: -45px" }
+      .col-xs-9
+        = @movie.description
+      .col-xs-1
+        Rating:
+        =@movie.rating
 - if user_signed_in?
   %p= link_to 'Email me details about this movie', send_info_movie_path(@movie), class: 'btn btn-sm btn-default'

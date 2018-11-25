@@ -2,11 +2,17 @@ class MoviesController < ApplicationController
   before_action :authenticate_user!, only: [:send_info]
 
   def index
-    @movies = Movie.all.decorate
+    resource = Movie.all
+    data = fetch_multiple_movies(titles(resource))
+
+    @movies = resource.decorate(context: data)
   end
 
   def show
-    @movie = Movie.find(params[:id])
+    resource = Movie.find(params[:id])
+    data = fetch_single_movie(resource.title)
+
+    @movie = resource.decorate(context: data)
   end
 
   def send_info
