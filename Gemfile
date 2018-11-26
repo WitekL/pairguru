@@ -11,6 +11,8 @@ gem "jquery-rails"
 gem "sass-rails"
 # Model serialization
 gem "fast_jsonapi"
+# Performing background jobs
+gem "sidekiq"
 gem "sqlite3"
 # Used for parallel http requests
 gem "typhoeus"
