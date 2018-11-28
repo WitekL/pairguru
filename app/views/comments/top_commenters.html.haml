@@ -1,0 +1,7 @@
+%h1.text-center Top commenters
+%ol.commenters
+  %label{:for => "commenter.name"}> Users:
+  - @top_commenters.each do |commenter|
+    %li
+      %h4= commenter.name
+

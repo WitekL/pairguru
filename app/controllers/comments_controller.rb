@@ -23,6 +23,15 @@ class CommentsController < ApplicationController
     end
   end
 
+  def top_commenters
+    @top_commenters = User
+      .joins(:comments)
+      .group('users.id')
+      .where('comments.created_at >= ?', 1.week.ago)
+      .order(Arel.sql('count(comments.id) desc'))
+      .limit(10)
+  end
+
   private
 
   def comment_params
